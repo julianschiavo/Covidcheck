@@ -105,7 +105,7 @@ enum CountryData: String {
     case cocosKeelingIslands = "Cocos (Keeling) Islands"
     case colombia = "Colombia"
     case comoros = "Comoros"
-    case congo = "Congo"
+    case congo = "Republic of Congo" // "Congo"
     case congoDemocraticRepublicOfThe = "Democratic Republic of Congo" // "Congo, Democratic Republic of the"
     case cookIslands = "Cook Islands"
     case costaRica = "Costa Rica"
