@@ -37,8 +37,8 @@ struct BaseView: View {
                 .background(Color.clear)
                 .clipShape(Circle())
         })
-            .sheet(isPresented: $isInfoViewPresented) {
-                InfoView(isPresented: self.$isInfoViewPresented)
+        .sheet(isPresented: $isInfoViewPresented) {
+            InfoView(isPresented: self.$isInfoViewPresented)
         }
     }
     
@@ -52,8 +52,8 @@ struct BaseView: View {
                 .background(Color.clear)
                 .clipShape(Circle())
         })
-            .alert(isPresented: $isExpandAlertPresented) {
-                Alert(title: allRegionExpansionAlertText)
+        .alert(isPresented: $isExpandAlertPresented) {
+            Alert(title: allRegionExpansionAlertText)
         }
     }
     
@@ -67,8 +67,8 @@ struct BaseView: View {
                 .background(Color.clear)
                 .clipShape(Circle())
         })
-            .alert(isPresented: $isRefreshAlertPresented) {
-                Alert(title: Text("Data Refreshed"))
+        .alert(isPresented: $isRefreshAlertPresented) {
+            Alert(title: Text("Data Refreshed"))
         }
     }
     
