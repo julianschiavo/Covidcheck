@@ -12,4 +12,4 @@ I worked on Covidcheck in my spare time and released it with the hope that it wo
 **If you work at or know a medical organization who could make use of this project and release it on the App Store, please do contact me. I'd love to volunteer to help out and work with you to customize and release this app to benefit even more people.**
 
 ## Credits & License
-Covidcheck is entirely licensed and available under [Unlicense](LICENSE.md) **EXCEPT** the flags and SF Symbols used in the app, which are owned by their respective owners.
+Covidcheck is entirely licensed and available under [Unlicense](LICENSE) **EXCEPT** the flags and SF Symbols used in the app, which are owned by their respective owners.
