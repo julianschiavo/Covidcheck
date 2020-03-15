@@ -19,7 +19,7 @@ struct InfoView: View {
         NavigationView {
             List {
                 Section(header: Text("ABOUT")) {
-                    Text("Covidcheck is made by Julian Schiavo and open sourced on Github under the MIT License.")
+                    Text("Covidcheck is made by Julian Schiavo and open sourced on Github under the Unlicense license.")
                 }
                 Section(header: Text("WHAT THE SYMBOLS MEAN")) {
                     VStack(alignment: .leading) {
