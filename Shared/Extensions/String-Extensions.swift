@@ -24,6 +24,7 @@ extension String {
 }
 
 extension FloatingPoint {
+    /// Formats a number using the "1K" format if it is above 10,000
     var kFormatted: String {
         String(format: self >= 10000 ? "%.1fK" : "%.0f", (self >= 10000 ? self / 1000 : self) as! CVarArg )
     }

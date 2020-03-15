@@ -8,13 +8,16 @@
 
 import SwiftUI
 
+/// The base view displayed at the root of the app, containing alerts and the
+/// `RegionList`. A separate base view is used on iOS and watchOS as watchOS
+/// does not support some features such as `NavigationView`.
 struct BaseView: View {
     
     @State var isRefreshAlertPresented = false
     @State private var expandedRegions = [Region]()
     
     var body: some View {
-        CountryList(isRefreshAlertPresented: $isRefreshAlertPresented)
+        RegionList(isRefreshAlertPresented: $isRefreshAlertPresented)
             .alert(isPresented: $isRefreshAlertPresented) {
                 Alert(title: Text("Data Refreshed"), dismissButton: nil)
             }

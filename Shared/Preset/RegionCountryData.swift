@@ -8,278 +8,693 @@
 
 import SwiftUI
 
-enum Region: CaseIterable {
-    case africaMiddleEastAndIndia
-    case asia
-    case australasia
-    case europe
-    case northAmerica
-    case southAmerica
-    case restOfTheWorld
+/*
+ INFO
+ This file contains data on regions/continents and countries
+ generated based on the ISO-3166(-1) specification. Where
+ the data source uses a different name for the place, the
+ original name has been commented and replaced.
+ 
+ *Original Data:* https://gist.github.com/julianschiavo/efdac8b2799ef2809719e89ade27a4a7
+ */
+
+/*
+ FLAGS
+ Note that while flags have been added/downloaded for most countries,
+ some countries may still be missing flags, including:
+ 
+ Aland Islands (AX), Antarctica (AQ), Benin (BJ), British Indian Ocean
+ Territory (IO), Burundi (BI), Cocos (Keeling) Islands (CC), Comoros (KM),
+ Democratic People's Republic of Korea (North Korea) (KP), Djibouti (DJ),
+ Eritrea (ER), Ethiopia (ET), French Southern Territories (TF), Kiribati (KI),
+ Libya (LY), Malawi (MW), Marshall Islands (MH), Niue (NU), Palau (PW),
+ Pitcairn Islands (PN), Sao Tome and Principe ST, Somalia (SO), South Sudan (SS),
+ Syrian Arab Republic (SY), Timor Leste (TL), Tokelau (TK), Tuvalu (TV),
+ Wallis and Futuna (WF), Western Samara (EH), Yemen (YE).
+ 
+ Feel free to create a Pull Request to add any of the above countries' flag
+ to Flags.xcassets, using the following format:
+ - Round Flag 30x30 named CountryCode.png
+ - Round Flag 60x60 named CountryCode@2x.png
+ If you add a flag, remove the country from the list above.
+ */
+
+enum Region: String, CaseIterable {
+    case overall = "Overall"
+    case africa = "Africa"
+    case antarctica = "Antarctica"
+    case asia = "Asia"
+    case europe = "Europe"
+    case latinAmericaAndTheCaribbean = "Latin America and the Caribbean"
+    case northAmerica = "North America"
+    case oceania = "Oceania"
+    case restOfTheWorld = "Rest of the World"
     
-    var name: String {
-        switch self {
-        case .africaMiddleEastAndIndia: return "Africa, Middle East, and India"
-        case .asia: return "Asia"
-        case .australasia: return "Australasia"
-        case .europe: return "Europe"
-        case .northAmerica: return "North America"
-        case .southAmerica: return "South America"
-        case .restOfTheWorld: return "Rest of the World"
-        }
-    }
+    var name: String { rawValue }
 }
 
 enum CountryData: String {
     case overall = "Overall"
-    
-    // Africa, Middle East, and India
-    case algeria = "Algeria"
-    case armenia = "Armenia"
-    case bahrain = "Bahrain"
-    case botswana = "Botswana"
-    case cameroon = "Cameroon"
-    case centralAfricanRepublic = "Central African Republic"
-    case egypt = "Egypt"
-    case equatorialGuinea = "Equatorial Guinea"
-    case guineaBissau = "Guinea-Bissau"
-    case guinea = "Guinea"
-    case india = "India"
-    case israel = "Israel"
-    case ivoryCoast = "Ivory Coast (Côte d'Ivoire)"
-    case jordan = "Jordan"
-    case kenya = "Kenya"
-    case kuwait = "Kuwait"
-    case madagascar = "Madagascar"
-    case mali = "Mali"
-    case mauritius = "Mauritius"
-    case morocco = "Morocco"
-    case mozambique = "Mozambique"
-    case niger = "Niger"
-    case nigeria = "Nigeria"
-    case occupiedPalestinianTerritory = "Occupied Palestinian territory"
-    case oman = "Oman"
-    case qatar = "Qatar"
-    case saudiArabia = "Saudi Arabia"
-    case senegal = "Senegal"
-    case southAfrica = "South Africa"
-    case togo = "Togo"
-    case tunisia = "Tunisia"
-    case uganda = "Uganda"
-    case unitedArabEmirates = "United Arab Emirates"
-    
-    // Asia
-    case mainlandChina = "Mainland China"
     case afghanistan = "Afghanistan"
-    case azerbaijan = "Azerbaijan"
-    case bangladesh = "Bangladesh"
-    case bhutan = "Bhutan"
-    case brunei = "Brunei"
-    case cambodia = "Cambodia"
-    case diamondPrincessCruiseShip = "Diamond Princess"
-    case hongKong = "Hong Kong"
-    case indonesia = "Indonesia"
-    case iran = "Iran"
-    case iraq = "Iraq"
-    case japan = "Japan"
-    case lebanon = "Lebanon"
-    case macau = "Macau"
-    case malaysia = "Malaysia"
-    case maldives = "Maldives"
-    case mongolia = "Mongolia"
-    case nepal = "Nepal"
-    case pakistan = "Pakistan"
-    case philippines = "Philippines"
-    case singapore = "Singapore"
-    case sriLanka = "Sri Lanka"
-    case korea = "South Korea"
-    case taiwan = "Taiwan"
-    case thailand = "Thailand"
-    case vietnam = "Vietnam"
-    case asia = "Rest of Asia"
-    
-    // Australasia
-    case australasia = "Australasia"
-    case australia = "Australia"
-    case newZealand = "New Zealand"
-    
-    // Europe
-    case europe = "Europe"
+    case alandIslands = "Åland Islands"
     case albania = "Albania"
+    case algeria = "Algeria"
+    case americanSamoa = "American Samoa"
     case andorra = "Andorra"
-    case austria = "Austria"
-    case belarus = "Belarus"
-    case belgium = "Belgium"
-    case bosniaAndHerzegovina = "Bosnia and Herzegovina"
-    case bulgaria = "Bulgaria"
-    case croatia = "Croatia"
-    case cyprus = "Cyprus"
-    case czechRepublic = "Czech Republic"
-    case denmark = "Denmark"
-    case estonia = "Estonia"
-    case faroeIslands = "Faroe Islands"
-    case germany = "Germany"
-    case georgia = "Georgia"
-    case gibraltar = "Gibraltar"
-    case greece = "Greece"
-    case finland = "Finland"
-    case france = "France"
-    case hungary = "Hungary"
-    case iceland = "Iceland"
-    case ireland = "Ireland"
-    case italy = "Italy"
-    case latvia = "Latvia"
-    case liechtenstein = "Liechtenstein"
-    case lithuania = "Lithuania"
-    case luxembourg = "Luxembourg"
-    case malta = "Malta"
-    case moldova = "Moldova"
-    case monaco = "Monaco"
-    case montenegro = "Montenegro"
-    case netherlands = "Netherlands"
-    case northMacedonia = "North Macedonia"
-    case norway = "Norway"
-    case poland = "Poland"
-    case portugal = "Portugal"
-    case romania = "Romania"
-    case russia = "Russia"
-    case sanMarino = "San Marino"
-    case serbia = "Serbia"
-    case slovakia = "Slovakia"
-    case slovenia = "Slovenia"
-    case spain = "Spain"
-    case sweden = "Sweden"
-    case switzerland = "Switzerland"
-    case turkey = "Turkey"
-    case ukraine = "Ukraine"
-    case unitedKingdom = "United Kingdom"
-    case vaticanCity = "Vatican City"
-    case vaticanCityAlternativeName = "Holy See"
-    
-    case northAmerica = "North America"
-    case grandPrincessCruiseShip = "Grand Princess"
-    case unitedStates = "United States"
-    case canada = "Canada"
-    
-    // South America
-    case southAmerica = "South America"
+    case angola = "Angola"
     case anguilla = "Anguilla"
+    case antarctica = "Antarctica"
     case antiguaAndBarbuda = "Antigua and Barbuda"
     case argentina = "Argentina"
+    case armenia = "Armenia"
+    case aruba = "Aruba"
+    case australia = "Australia"
+    case austria = "Austria"
+    case azerbaijan = "Azerbaijan"
+    case bahamas = "Bahamas"
+    case bahrain = "Bahrain"
+    case bangladesh = "Bangladesh"
     case barbados = "Barbados"
+    case belarus = "Belarus"
+    case belgium = "Belgium"
     case belize = "Belize"
+    case benin = "Benin"
     case bermuda = "Bermuda"
-    case bolivia = "Bolivia"
+    case bhutan = "Bhutan"
+    case boliviaPlurinationalStateOf = "Bolivia" // "Bolivia (Plurinational State of)"
+    case bonaireSintEustatiusAndSaba = "Bonaire, Sint Eustatius and Saba"
+    case bosniaAndHerzegovina = "Bosnia and Herzegovina"
+    case botswana = "Botswana"
+    case bouvetIsland = "Bouvet Island"
     case brazil = "Brazil"
-    case britishVirginIslands = "British Virgin Islands"
+    case britishIndianOceanTerritory = "British Indian Ocean Territory"
+    case bruneiDarussalam = "Brunei" // "Brunei Darussalam"
+    case bulgaria = "Bulgaria"
+    case burkinaFaso = "Burkina Faso"
+    case burundi = "Burundi"
+    case caboVerde = "Cabo Verde"
+    case cambodia = "Cambodia"
+    case cameroon = "Cameroon"
+    case canada = "Canada"
     case caymanIslands = "Cayman Islands"
+    case centralAfricanRepublic = "Central African Republic"
+    case chad = "Chad"
     case chile = "Chile"
+    case china = "Mainland China" // "China"
+    case christmasIsland = "Christmas Island"
+    case cocosKeelingIslands = "Cocos (Keeling) Islands"
     case colombia = "Colombia"
+    case comoros = "Comoros"
+    case congo = "Congo"
+    case congoDemocraticRepublicOfThe = "Democratic Republic of Congo" // "Congo, Democratic Republic of the"
+    case cookIslands = "Cook Islands"
     case costaRica = "Costa Rica"
+    case coteDIvoire = "Cote d'Ivoire" // "Côte d'Ivoire"
+    case croatia = "Croatia"
+    case cuba = "Cuba"
+    case curacao = "Curaçao"
+    case cyprus = "Cyprus"
+    case czechia = "Czech Republic" // "Czechia"
+    case denmark = "Denmark"
+    case djibouti = "Djibouti"
     case dominica = "Dominica"
     case dominicanRepublic = "Dominican Republic"
     case ecuador = "Ecuador"
+    case egypt = "Egypt"
     case elSalvador = "El Salvador"
+    case equatorialGuinea = "Equatorial Guinea"
+    case eritrea = "Eritrea"
+    case estonia = "Estonia"
+    case eswatini = "Eswatini"
+    case ethiopia = "Ethiopia"
+    case falklandIslandsMalvinas = "Falkland Islands (Malvinas)"
+    case faroeIslands = "Faroe Islands"
+    case fiji = "Fiji"
+    case finland = "Finland"
+    case france = "France"
     case frenchGuiana = "French Guiana"
+    case frenchPolynesia = "French Polynesia"
+    case frenchSouthernTerritories = "French Southern Territories"
+    case gabon = "Gabon"
+    case gambia = "Gambia"
+    case georgia = "Georgia"
+    case germany = "Germany"
+    case ghana = "Ghana"
+    case gibraltar = "Gibraltar"
+    case greece = "Greece"
+    case greenland = "Greenland"
     case grenada = "Grenada"
+    case guadeloupe = "Guadeloupe"
+    case guam = "Guam"
     case guatemala = "Guatemala"
+    case guernsey = "Guernsey"
+    case guinea = "Guinea"
+    case guineaBissau = "Guinea-Bissau"
     case guyana = "Guyana"
+    case haiti = "Haiti"
+    case heardIslandAndMcDonaldIslands = "Heard Island and McDonald Islands"
+    case holySee = "Holy See"
     case honduras = "Honduras"
+    case hongKong = "Hong Kong"
+    case hungary = "Hungary"
+    case iceland = "Iceland"
+    case india = "India"
+    case indonesia = "Indonesia"
+    case iranIslamicRepublicOf = "Iran" // "Iran (Islamic Republic of)"
+    case iraq = "Iraq"
+    case ireland = "Ireland"
+    case isleOfMan = "Isle of Man"
+    case israel = "Israel"
+    case italy = "Italy"
     case jamaica = "Jamaica"
-    case mexico = "Mexico"
+    case japan = "Japan"
+    case jersey = "Jersey"
+    case jordan = "Jordan"
+    case kazakhstan = "Kazakhstan"
+    case kenya = "Kenya"
+    case kiribati = "Kiribati"
+    case koreaDemocraticPeopleSRepublicOf = "Korea (Democratic People's Republic of)"
+    case koreaRepublicOf = "South Korea" // "Korea, Republic of"
+    case kuwait = "Kuwait"
+    case kyrgyzstan = "Kyrgyzstan"
+    case laoPeopleSDemocraticRepublic = "Lao People's Democratic Republic"
+    case latvia = "Latvia"
+    case lebanon = "Lebanon"
+    case lesotho = "Lesotho"
+    case liberia = "Liberia"
+    case libya = "Libya"
+    case liechtenstein = "Liechtenstein"
+    case lithuania = "Lithuania"
+    case luxembourg = "Luxembourg"
+    case macao = "Macau" // "Macao"
+    case madagascar = "Madagascar"
+    case malawi = "Malawi"
+    case malaysia = "Malaysia"
+    case maldives = "Maldives"
+    case mali = "Mali"
+    case malta = "Malta"
+    case marshallIslands = "Marshall Islands"
     case martinique = "Martinique"
+    case mauritania = "Mauritania"
+    case mauritius = "Mauritius"
+    case mayotte = "Mayotte"
+    case mexico = "Mexico"
+    case micronesiaFederatedStatesOf = "Micronesia (Federated States of)"
+    case moldovaRepublicOf = "Moldova" // "Moldova, Republic of"
+    case monaco = "Monaco"
+    case mongolia = "Mongolia"
+    case montenegro = "Montenegro"
     case montserrat = "Montserrat"
+    case morocco = "Morocco"
+    case mozambique = "Mozambique"
+    case myanmar = "Myanmar"
+    case namibia = "Namibia"
+    case nauru = "Nauru"
+    case nepal = "Nepal"
+    case netherlands = "Netherlands"
+    case newCaledonia = "New Caledonia"
+    case newZealand = "New Zealand"
     case nicaragua = "Nicaragua"
+    case niger = "Niger"
+    case nigeria = "Nigeria"
+    case niue = "Niue"
+    case norfolkIsland = "Norfolk Island"
+    case northMacedonia = "North Macedonia"
+    case northernMarianaIslands = "Northern Mariana Islands"
+    case norway = "Norway"
+    case oman = "Oman"
+    case pakistan = "Pakistan"
+    case palau = "Palau"
+    case palestineStateOf = "Occupied Palestinian territory" // "Palestine, State of"
     case panama = "Panama"
+    case papuaNewGuinea = "Papua New Guinea"
     case paraguay = "Paraguay"
     case peru = "Peru"
-    case stKittsAndNevis = "St. Kitts and Nevis"
-    case stLucia = "St. Lucia"
-    case stVincentAndTheGrenadines = "St. Vincent and the Grenadines"
+    case philippines = "Philippines"
+    case pitcairn = "Pitcairn"
+    case poland = "Poland"
+    case portugal = "Portugal"
+    case puertoRico = "Puerto Rico"
+    case qatar = "Qatar"
+    case reunion = "Reunion" // "Réunion"
+    case romania = "Romania"
+    case russianFederation = "Russia" // "Russian Federation"
+    case rwanda = "Rwanda"
+    case saintBarthelemy = "Saint Barthélemy"
+    case saintHelenaAscensionAndTristanDaCunha = "Saint Helena, Ascension and Tristan da Cunha"
+    case saintKittsAndNevis = "Saint Kitts and Nevis"
+    case saintLucia = "Saint Lucia"
+    case saintMartinFrenchPart = "Saint Martin (French part)"
+    case saintPierreAndMiquelon = "Saint Pierre and Miquelon"
+    case saintVincentAndTheGrenadines = "Saint Vincent and the Grenadines"
+    case samoa = "Samoa"
+    case sanMarino = "San Marino"
+    case saoTomeAndPrincipe = "Sao Tome and Principe"
+    case saudiArabia = "Saudi Arabia"
+    case senegal = "Senegal"
+    case serbia = "Serbia"
+    case seychelles = "Seychelles"
+    case sierraLeone = "Sierra Leone"
+    case singapore = "Singapore"
+    case sintMaartenDutchPart = "Sint Maarten (Dutch part)"
+    case slovakia = "Slovakia"
+    case slovenia = "Slovenia"
+    case solomonIslands = "Solomon Islands"
+    case somalia = "Somalia"
+    case southAfrica = "South Africa"
+    case southGeorgiaAndTheSouthSandwichIslands = "South Georgia and the South Sandwich Islands"
+    case southSudan = "South Sudan"
+    case spain = "Spain"
+    case sriLanka = "Sri Lanka"
+    case sudan = "Sudan"
     case suriname = "Suriname"
-    case theBahamas = "The Bahamas"
+    case svalbardAndJanMayen = "Svalbard and Jan Mayen"
+    case sweden = "Sweden"
+    case switzerland = "Switzerland"
+    case syrianArabRepublic = "Syrian Arab Republic"
+    case taiwanProvinceOfChina = "Taiwan" // "Taiwan, Province of China"
+    case tajikistan = "Tajikistan"
+    case tanzaniaUnitedRepublicOf = "Tanzania, United Republic of"
+    case thailand = "Thailand"
+    case timorLeste = "Timor-Leste"
+    case togo = "Togo"
+    case tokelau = "Tokelau"
+    case tonga = "Tonga"
     case trinidadAndTobago = "Trinidad and Tobago"
-    case turksAndCaicos = "Turks and Caicos Islands"
+    case tunisia = "Tunisia"
+    case turkey = "Turkey"
+    case turkmenistan = "Turkmenistan"
+    case turksAndCaicosIslands = "Turks and Caicos Islands"
+    case tuvalu = "Tuvalu"
+    case uganda = "Uganda"
+    case ukraine = "Ukraine"
+    case unitedArabEmirates = "United Arab Emirates"
+    case unitedKingdomOfGreatBritainAndNorthernIreland = "United Kingdom" // "United Kingdom of Great Britain and Northern Ireland"
+    case unitedStatesOfAmerica = "United States" // "United States of America"
+    case unitedStatesMinorOutlyingIslands = "United States Minor Outlying Islands"
     case uruguay = "Uruguay"
-    case venezuela = "Venezuela"
+    case uzbekistan = "Uzbekistan"
+    case vanuatu = "Vanuatu"
+    case venezuelaBolivarianRepublicOf = "Venezuela (Bolivarian Republic of)"
+    case vietNam = "Vietnam" // "Viet Nam"
+    case virginIslandsBritish = "Virgin Islands (British)"
+    case virginIslandsUS = "Virgin Islands (U.S.)"
+    case wallisAndFutuna = "Wallis and Futuna"
+    case westernSahara = "Western Sahara"
+    case yemen = "Yemen"
+    case zambia = "Zambia"
+    case zimbabwe = "Zimbabwe"
     
-    case restOfTheWorld = "Rest of the world"
+    // Special/Additional Cases
+    case diamondPrincessCruiseShip = "Diamond Princess"
+    case grandPrincessCruiseShip = "Grand Princess"
+    case kosovo = "Kosovo"
     
+    var name: String { rawValue }
+    
+    var image: Image { Image(code.lowercased()) }
+    
+    var code: String {
+        switch self {
+        case .overall: return "world"
+        case .afghanistan: return "AF"
+        case .alandIslands: return "AX"
+        case .albania: return "AL"
+        case .algeria: return "DZ"
+        case .americanSamoa: return "AS"
+        case .andorra: return "AD"
+        case .angola: return "AO"
+        case .anguilla: return "AI"
+        case .antarctica: return "AQ"
+        case .antiguaAndBarbuda: return "AG"
+        case .argentina: return "AR"
+        case .armenia: return "AM"
+        case .aruba: return "AW"
+        case .australia: return "AU"
+        case .austria: return "AT"
+        case .azerbaijan: return "AZ"
+        case .bahamas: return "BS"
+        case .bahrain: return "BH"
+        case .bangladesh: return "BD"
+        case .barbados: return "BB"
+        case .belarus: return "BY"
+        case .belgium: return "BE"
+        case .belize: return "BZ"
+        case .benin: return "BJ"
+        case .bermuda: return "BM"
+        case .bhutan: return "BT"
+        case .boliviaPlurinationalStateOf: return "BO"
+        case .bonaireSintEustatiusAndSaba: return "NL" // "BQ"
+        case .bosniaAndHerzegovina: return "BA"
+        case .botswana: return "BW"
+        case .bouvetIsland: return "NO" // "BV"
+        case .brazil: return "BR"
+        case .britishIndianOceanTerritory: return "IO"
+        case .bruneiDarussalam: return "BN"
+        case .bulgaria: return "BG"
+        case .burkinaFaso: return "BF"
+        case .burundi: return "BI"
+        case .caboVerde: return "CV"
+        case .cambodia: return "KH"
+        case .cameroon: return "CM"
+        case .canada: return "CA"
+        case .caymanIslands: return "KY"
+        case .centralAfricanRepublic: return "CF"
+        case .chad: return "TD"
+        case .chile: return "CL"
+        case .china: return "CN"
+        case .christmasIsland: return "CX"
+        case .cocosKeelingIslands: return "CC"
+        case .colombia: return "CO"
+        case .comoros: return "KM"
+        case .congo: return "CG"
+        case .congoDemocraticRepublicOfThe: return "CD"
+        case .cookIslands: return "CK"
+        case .costaRica: return "CR"
+        case .coteDIvoire: return "CI"
+        case .croatia: return "HR"
+        case .cuba: return "CU"
+        case .curacao: return "CW"
+        case .cyprus: return "CY"
+        case .czechia: return "CZ"
+        case .denmark: return "DK"
+        case .djibouti: return "DJ"
+        case .dominica: return "DM"
+        case .dominicanRepublic: return "DO"
+        case .ecuador: return "EC"
+        case .egypt: return "EG"
+        case .elSalvador: return "SV"
+        case .equatorialGuinea: return "GQ"
+        case .eritrea: return "ER"
+        case .estonia: return "EE"
+        case .eswatini: return "SZ"
+        case .ethiopia: return "ET"
+        case .falklandIslandsMalvinas: return "FK"
+        case .faroeIslands: return "FO"
+        case .fiji: return "FJ"
+        case .finland: return "FI"
+        case .france: return "FR"
+        case .frenchGuiana: return "FR" //"GF"
+        case .frenchPolynesia: return "FR" //"PF"
+        case .frenchSouthernTerritories: return "FR" //"TF"
+        case .gabon: return "GA"
+        case .gambia: return "GM"
+        case .georgia: return "GE"
+        case .germany: return "DE"
+        case .ghana: return "GH"
+        case .gibraltar: return "GI"
+        case .greece: return "GR"
+        case .greenland: return "GL"
+        case .grenada: return "GD"
+        case .guadeloupe: return "GP"
+        case .guam: return "GU"
+        case .guatemala: return "GT"
+        case .guernsey: return "GG"
+        case .guinea: return "GN"
+        case .guineaBissau: return "GW"
+        case .guyana: return "GY"
+        case .haiti: return "HT"
+        case .heardIslandAndMcDonaldIslands: return "AU" // "HM"
+        case .holySee: return "VA"
+        case .honduras: return "HN"
+        case .hongKong: return "HK"
+        case .hungary: return "HU"
+        case .iceland: return "IS"
+        case .india: return "IN"
+        case .indonesia: return "ID"
+        case .iranIslamicRepublicOf: return "IR"
+        case .iraq: return "IQ"
+        case .ireland: return "IE"
+        case .isleOfMan: return "IM"
+        case .israel: return "IL"
+        case .italy: return "IT"
+        case .jamaica: return "JM"
+        case .japan, .diamondPrincessCruiseShip: return "JP"
+        case .jersey: return "JE"
+        case .jordan: return "JO"
+        case .kazakhstan: return "KZ"
+        case .kenya: return "KE"
+        case .kiribati: return "KI"
+        case .koreaDemocraticPeopleSRepublicOf: return "KP"
+        case .koreaRepublicOf: return "KR"
+        case .kosovo: return "XK"
+        case .kuwait: return "KW"
+        case .kyrgyzstan: return "KG"
+        case .laoPeopleSDemocraticRepublic: return "LA"
+        case .latvia: return "LV"
+        case .lebanon: return "LB"
+        case .lesotho: return "LS"
+        case .liberia: return "LR"
+        case .libya: return "LY"
+        case .liechtenstein: return "LI"
+        case .lithuania: return "LT"
+        case .luxembourg: return "LU"
+        case .macao: return "MO"
+        case .madagascar: return "MG"
+        case .malawi: return "MW"
+        case .malaysia: return "MY"
+        case .maldives: return "MV"
+        case .mali: return "ML"
+        case .malta: return "MT"
+        case .marshallIslands: return "MH"
+        case .martinique: return "FR" //"MQ"
+        case .mauritania: return "MR"
+        case .mauritius: return "MU"
+        case .mayotte: return "FR" // "YT"
+        case .mexico: return "MX"
+        case .micronesiaFederatedStatesOf: return "FM"
+        case .moldovaRepublicOf: return "MD"
+        case .monaco: return "MC"
+        case .mongolia: return "MN"
+        case .montenegro: return "ME"
+        case .montserrat: return "MS"
+        case .morocco: return "MA"
+        case .mozambique: return "MZ"
+        case .myanmar: return "MM"
+        case .namibia: return "NA"
+        case .nauru: return "NR"
+        case .nepal: return "NP"
+        case .netherlands: return "NL"
+        case .newCaledonia: return "NC"
+        case .newZealand: return "NZ"
+        case .nicaragua: return "NI"
+        case .niger: return "NE"
+        case .nigeria: return "NG"
+        case .niue: return "NU"
+        case .norfolkIsland: return "NF"
+        case .northMacedonia: return "MK"
+        case .northernMarianaIslands: return "MP"
+        case .norway: return "NO"
+        case .oman: return "OM"
+        case .pakistan: return "PK"
+        case .palau: return "PW"
+        case .palestineStateOf: return "PS"
+        case .panama: return "PA"
+        case .papuaNewGuinea: return "PG"
+        case .paraguay: return "PY"
+        case .peru: return "PE"
+        case .philippines: return "PH"
+        case .pitcairn: return "PN"
+        case .poland: return "PL"
+        case .portugal: return "PT"
+        case .puertoRico: return "PR"
+        case .qatar: return "QA"
+        case .reunion: return "RE"
+        case .romania: return "RO"
+        case .russianFederation: return "RU"
+        case .rwanda: return "RW"
+        case .saintBarthelemy: return "BL"
+        case .saintHelenaAscensionAndTristanDaCunha: return "GB" // "SH"
+        case .saintKittsAndNevis: return "KN"
+        case .saintLucia: return "LC"
+        case .saintMartinFrenchPart: return "MF"
+        case .saintPierreAndMiquelon: return "PM"
+        case .saintVincentAndTheGrenadines: return "VC"
+        case .samoa: return "WS"
+        case .sanMarino: return "SM"
+        case .saoTomeAndPrincipe: return "ST"
+        case .saudiArabia: return "SA"
+        case .senegal: return "SN"
+        case .serbia: return "RS"
+        case .seychelles: return "SC"
+        case .sierraLeone: return "SL"
+        case .singapore: return "SG"
+        case .sintMaartenDutchPart: return "SX"
+        case .slovakia: return "SK"
+        case .slovenia: return "SI"
+        case .solomonIslands: return "SB"
+        case .somalia: return "SO"
+        case .southAfrica: return "ZA"
+        case .southGeorgiaAndTheSouthSandwichIslands: return "GB" // "GS"
+        case .southSudan: return "SS"
+        case .spain: return "ES"
+        case .sriLanka: return "LK"
+        case .sudan: return "SD"
+        case .suriname: return "SR"
+        case .svalbardAndJanMayen: return "SJ"
+        case .sweden: return "SE"
+        case .switzerland: return "CH"
+        case .syrianArabRepublic: return "SY"
+        case .taiwanProvinceOfChina: return "TW"
+        case .tajikistan: return "TJ"
+        case .tanzaniaUnitedRepublicOf: return "TZ"
+        case .thailand: return "TH"
+        case .timorLeste: return "TL"
+        case .togo: return "TG"
+        case .tokelau: return "TK"
+        case .tonga: return "TO"
+        case .trinidadAndTobago: return "TT"
+        case .tunisia: return "TN"
+        case .turkey: return "TR"
+        case .turkmenistan: return "TM"
+        case .turksAndCaicosIslands: return "TC"
+        case .tuvalu: return "TV"
+        case .uganda: return "UG"
+        case .ukraine: return "UA"
+        case .unitedArabEmirates: return "AE"
+        case .unitedKingdomOfGreatBritainAndNorthernIreland: return "GB"
+        case .unitedStatesOfAmerica, .grandPrincessCruiseShip: return "US"
+        case .unitedStatesMinorOutlyingIslands: return "US" // "UM"
+        case .uruguay: return "UY"
+        case .uzbekistan: return "UZ"
+        case .vanuatu: return "VU"
+        case .venezuelaBolivarianRepublicOf: return "VE"
+        case .vietNam: return "VN"
+        case .virginIslandsBritish: return "VG"
+        case .virginIslandsUS: return "VI"
+        case .wallisAndFutuna: return "WF"
+        case .westernSahara: return "EH"
+        case .yemen: return "YE"
+        case .zambia: return "ZM"
+        case .zimbabwe: return "ZW"
+        }
+    }
+        
     var region: Region {
         switch self {
+        case .overall:
+            return .overall
+            
+        case .antarctica:
+            return .antarctica
+            
         case .algeria,
-             .armenia,
-             .bahrain,
+             .angola,
+             .benin,
              .botswana,
+             .britishIndianOceanTerritory,
+             .burkinaFaso,
+             .burundi,
+             .caboVerde,
              .cameroon,
              .centralAfricanRepublic,
+             .chad,
+             .comoros,
+             .congo,
+             .congoDemocraticRepublicOfThe,
+             .coteDIvoire,
+             .djibouti,
              .egypt,
              .equatorialGuinea,
-             .guineaBissau,
+             .eritrea,
+             .eswatini,
+             .ethiopia,
+             .frenchSouthernTerritories,
+             .gabon,
+             .gambia,
+             .ghana,
              .guinea,
-             .india,
-             .israel,
-             .ivoryCoast,
-             .jordan,
+             .guineaBissau,
              .kenya,
-             .kuwait,
+             .lesotho,
+             .liberia,
+             .libya,
              .madagascar,
+             .malawi,
              .mali,
+             .mauritania,
              .mauritius,
+             .mayotte,
              .morocco,
              .mozambique,
+             .namibia,
              .niger,
              .nigeria,
-             .occupiedPalestinianTerritory,
-             .oman,
-             .qatar,
-             .saudiArabia,
+             .reunion,
+             .rwanda,
+             .saintHelenaAscensionAndTristanDaCunha,
+             .saoTomeAndPrincipe,
              .senegal,
+             .seychelles,
+             .sierraLeone,
+             .somalia,
              .southAfrica,
+             .southSudan,
+             .sudan,
+             .tanzaniaUnitedRepublicOf,
              .togo,
              .tunisia,
              .uganda,
-             .unitedArabEmirates:
-            return .africaMiddleEastAndIndia
+             .westernSahara,
+             .zambia,
+             .zimbabwe:
+            return .africa
             
-        case .mainlandChina, 
-             .hongKong,
-             .macau,
-             .taiwan,
-             .afghanistan,
+        case .afghanistan,
+             .armenia,
              .azerbaijan,
+             .bahrain,
              .bangladesh,
              .bhutan,
-             .brunei,
+             .bruneiDarussalam,
              .cambodia,
+             .china,
+             .cyprus,
              .diamondPrincessCruiseShip,
-             .asia,
-             .korea,
+             .georgia,
+             .hongKong,
+             .india,
              .indonesia,
-             .iran,
+             .iranIslamicRepublicOf,
              .iraq,
+             .israel,
              .japan,
+             .jordan,
+             .kazakhstan,
+             .koreaDemocraticPeopleSRepublicOf,
+             .koreaRepublicOf,
+             .kuwait,
+             .kyrgyzstan,
+             .laoPeopleSDemocraticRepublic,
              .lebanon,
+             .macao,
              .malaysia,
              .maldives,
              .mongolia,
+             .myanmar,
              .nepal,
+             .oman,
              .pakistan,
+             .palestineStateOf,
              .philippines,
+             .qatar,
+             .saudiArabia,
              .singapore,
              .sriLanka,
+             .syrianArabRepublic,
+             .taiwanProvinceOfChina,
+             .tajikistan,
              .thailand,
-             .vietnam:
+             .timorLeste,
+             .turkey,
+             .turkmenistan,
+             .unitedArabEmirates,
+             .uzbekistan,
+             .vietNam,
+             .yemen:
             return .asia
             
-        case .australasia,
-             .australia,
-             .newZealand:
-            return .australasia
-            
-            
-        // Europe
-        case .europe,
+        case .alandIslands,
              .albania,
              .andorra,
              .austria,
@@ -288,27 +703,30 @@ enum CountryData: String {
              .bosniaAndHerzegovina,
              .bulgaria,
              .croatia,
-             .cyprus,
-             .czechRepublic,
+             .czechia,
              .denmark,
              .estonia,
              .faroeIslands,
-             .germany,
-             .georgia,
-             .gibraltar,
-             .greece,
              .finland,
              .france,
+             .germany,
+             .gibraltar,
+             .greece,
+             .guernsey,
+             .holySee,
              .hungary,
              .iceland,
              .ireland,
+             .isleOfMan,
              .italy,
+             .jersey,
+             .kosovo,
              .latvia,
              .liechtenstein,
              .lithuania,
              .luxembourg,
              .malta,
-             .moldova,
+             .moldovaRepublicOf,
              .monaco,
              .montenegro,
              .netherlands,
@@ -317,49 +735,86 @@ enum CountryData: String {
              .poland,
              .portugal,
              .romania,
-             .russia,
+             .russianFederation,
              .sanMarino,
              .serbia,
              .slovakia,
              .slovenia,
              .spain,
+             .svalbardAndJanMayen,
              .sweden,
              .switzerland,
-             .turkey,
              .ukraine,
-             .unitedKingdom,
-             .vaticanCity,
-             .vaticanCityAlternativeName:
+             .unitedKingdomOfGreatBritainAndNorthernIreland:
             return .europe
             
-        case .northAmerica,
+        case .bermuda,
+             .canada,
              .grandPrincessCruiseShip,
-             .unitedStates,
-             .canada:
+             .greenland,
+             .saintPierreAndMiquelon,
+             .unitedStatesOfAmerica:
             return .northAmerica
             
-        case .southAmerica,
-             .anguilla,
+        case .americanSamoa,
+             .australia,
+             .christmasIsland,
+             .cocosKeelingIslands,
+             .cookIslands,
+             .fiji,
+             .frenchPolynesia,
+             .guam,
+             .heardIslandAndMcDonaldIslands,
+             .kiribati,
+             .marshallIslands,
+             .micronesiaFederatedStatesOf,
+             .nauru,
+             .newCaledonia,
+             .newZealand,
+             .niue,
+             .norfolkIsland,
+             .northernMarianaIslands,
+             .palau,
+             .papuaNewGuinea,
+             .pitcairn,
+             .samoa,
+             .solomonIslands,
+             .tokelau,
+             .tonga,
+             .tuvalu,
+             .unitedStatesMinorOutlyingIslands,
+             .vanuatu,
+             .wallisAndFutuna:
+            return .oceania
+            
+        case .anguilla,
              .antiguaAndBarbuda,
              .argentina,
+             .aruba,
+             .bahamas,
              .barbados,
              .belize,
-             .bermuda,
-             .bolivia,
+             .boliviaPlurinationalStateOf,
+             .bonaireSintEustatiusAndSaba,
+             .bouvetIsland,
              .brazil,
-             .britishVirginIslands,
              .caymanIslands,
              .chile,
              .colombia,
              .costaRica,
+             .cuba,
+             .curacao,
              .dominica,
              .dominicanRepublic,
              .ecuador,
              .elSalvador,
+             .falklandIslandsMalvinas,
              .frenchGuiana,
              .grenada,
+             .guadeloupe,
              .guatemala,
              .guyana,
+             .haiti,
              .honduras,
              .jamaica,
              .martinique,
@@ -369,194 +824,22 @@ enum CountryData: String {
              .panama,
              .paraguay,
              .peru,
-             .stKittsAndNevis,
-             .stLucia,
-             .stVincentAndTheGrenadines,
+             .puertoRico,
+             .saintBarthelemy,
+             .saintKittsAndNevis,
+             .saintLucia,
+             .saintMartinFrenchPart,
+             .saintVincentAndTheGrenadines,
+             .sintMaartenDutchPart,
+             .southGeorgiaAndTheSouthSandwichIslands,
              .suriname,
-             .theBahamas,
              .trinidadAndTobago,
-             .turksAndCaicos,
+             .turksAndCaicosIslands,
              .uruguay,
-             .venezuela:
-            return .southAmerica
-            
-        case .overall, .restOfTheWorld:
-            return .restOfTheWorld
+             .venezuelaBolivarianRepublicOf,
+             .virginIslandsBritish,
+             .virginIslandsUS:
+            return .latinAmericaAndTheCaribbean
         }
-    }
-    
-    var code: String {
-        switch self {
-        // Africa, Middle East, and India
-        case .algeria: return "dz"
-        case .armenia: return "am"
-        case .bahrain: return "bh"
-        case .botswana: return "bw"
-        case .cameroon: return "cm"
-        case .centralAfricanRepublic: return "cf"
-        case .egypt: return "eg"
-        case .equatorialGuinea: return "gq"
-        case .guineaBissau: return "gw"
-        case .guinea: return "gw"
-        case .india: return "in"
-        case .israel: return "il"
-        case .ivoryCoast: return "ci"
-        case .jordan: return "jo"
-        case .kenya: return "ke"
-        case .kuwait: return "kw"
-        case .madagascar: return "mg"
-        case .mali: return "ml"
-        case .mauritius: return "mu"
-        case .morocco: return "ma"
-        case .mozambique: return "mz"
-        case .niger: return "ne"
-        case .nigeria: return "ng"
-        case .occupiedPalestinianTerritory: return "noflag"
-        case .oman: return "om"
-        case .qatar: return "qa"
-        case .saudiArabia: return "sa"
-        case .senegal: return "sn"
-        case .southAfrica: return "za"
-        case .togo: return "tg"
-        case .tunisia: return "tn"
-        case .uganda: return "ug"
-        case .unitedArabEmirates: return "ae"
-            
-        case .mainlandChina: return "cn"
-        case .hongKong: return "hk"
-        case .macau: return "mo"
-        case .taiwan: return "tw"
-        case .afghanistan: return "af"
-        case .azerbaijan: return "az"
-        case .bangladesh: return "bd"
-        case .bhutan: return "bt"
-        case .brunei: return "bn"
-        case .cambodia: return "kh"
-        case .korea: return "kr"
-        case .indonesia: return "id"
-        case .iran: return "ir"
-        case .iraq: return "iq"
-        case .diamondPrincessCruiseShip, .japan: return "jp"
-        case .lebanon: return "lb"
-        case .malaysia: return "my"
-        case .maldives: return "mv"
-        case .mongolia: return "mn"
-        case .nepal: return "np"
-        case .pakistan: return "pk"
-        case .philippines: return "ph"
-        case .singapore: return "sg"
-        case .sriLanka: return "lk"
-        case .thailand: return "th"
-        case .vietnam: return "vn"
-            
-        // Europe
-        case .europe: return "eu"
-        case .albania: return "al"
-        case .andorra: return "ad"
-        case .austria: return "at"
-        case .belarus: return "by"
-        case .belgium: return "be"
-        case .bosniaAndHerzegovina: return "ba"
-        case .bulgaria: return "bg"
-        case .croatia: return "hr"
-        case .cyprus: return "cy"
-        case .czechRepublic: return "cz"
-        case .denmark: return "dk"
-        case .estonia: return "ee"
-        case .faroeIslands: return "fo"
-        case .germany: return "de"
-        case .georgia: return "ge"
-        case .gibraltar: return "gi"
-        case .greece: return "gr"
-        case .finland: return "fi"
-        case .france, .frenchGuiana, .martinique: return "fr"
-        case .hungary: return "hu"
-        case .iceland: return "is"
-        case .ireland: return "ie"
-        case .italy: return "it"
-        case .latvia: return "lv"
-        case .liechtenstein: return "li"
-        case .lithuania: return "lt"
-        case .luxembourg: return "lu"
-        case .malta: return "mt"
-        case .moldova: return "md"
-        case .monaco: return "mc"
-        case .montenegro: return "me"
-        case .netherlands: return "nl"
-        case .northMacedonia: return "mk"
-        case .norway: return "no"
-        case .poland: return "pl"
-        case .portugal: return "pt"
-        case .romania: return "ro"
-        case .russia: return "ru"
-        case .sanMarino: return "sm"
-        case .serbia: return "rs"
-        case .slovakia: return "sk"
-        case .slovenia: return "si"
-        case .spain: return "es"
-        case .sweden: return "se"
-        case .switzerland: return "ch"
-        case .turkey: return "tr"
-        case .ukraine: return "ua"
-        case .unitedKingdom: return "uk"
-        case .vaticanCity, .vaticanCityAlternativeName: return "va"
-            
-        // South America
-        case .southAmerica: return "america"
-        case .anguilla: return "ai"
-        case .antiguaAndBarbuda: return "ag"
-        case .argentina: return "ar"
-        case .barbados: return "bb"
-        case .belize: return "bz"
-        case .bermuda: return "bm"
-        case .bolivia: return "bo"
-        case .brazil: return "br"
-        case .britishVirginIslands: return "vg"
-        case .caymanIslands: return "ky"
-        case .chile: return "cl"
-        case .colombia: return "co"
-        case .costaRica: return "cr"
-        case .dominica: return "dm"
-        case .dominicanRepublic: return "do"
-        case .ecuador: return "ec"
-        case .elSalvador: return "sv"
-        case .grenada: return "gd"
-        case .guatemala: return "gt"
-        case .guyana: return "gy"
-        case .honduras: return "hn"
-        case .jamaica: return "jm"
-        case .mexico: return "mx"
-        case .montserrat: return "ms"
-        case .nicaragua: return "ni"
-        case .panama: return "pa"
-        case .paraguay: return "py"
-        case .peru: return "pe"
-        case .stKittsAndNevis: return "kn"
-        case .stLucia: return "lc"
-        case .stVincentAndTheGrenadines: return "vc"
-        case .suriname: return "sr"
-        case .theBahamas: return "bs"
-        case .trinidadAndTobago: return "tt"
-        case .turksAndCaicos: return "tc"
-        case .uruguay: return "uy"
-        case .venezuela: return "ve"
-            
-        case .australasia, .australia: return "au"
-        case .newZealand: return "nz"
-        case .northAmerica: return "america"
-        case .grandPrincessCruiseShip, .unitedStates: return "us"
-        case .canada: return "ca"
-//        default: return "default"
-        case .overall:
-            return "world"
-        case .asia:
-            return "asia"
-        case .restOfTheWorld:
-            return "world"
-        }
-    }
-    
-    var image: Image {
-        Image(code)
     }
 }

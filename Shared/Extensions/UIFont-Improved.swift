@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A collection of useful `UIFont` extensions
 extension UIFont {
     @available(iOS 13.0, *) @available(watchOS, unavailable)
     var monospaced: UIFont {

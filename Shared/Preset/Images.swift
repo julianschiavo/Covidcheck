@@ -8,8 +8,11 @@
 
 import SwiftUI
 
+/// Enum containing the images used inside this app for quicker use
+/// and to avoid mistakes when typing strings.
 enum Images {
     static let refresh = Image(systemName: "arrow.clockwise")
+    static let info = Image(systemName: "info.circle")
     
     static let expanded = Image(systemName: "chevron.up")
     static let collapsed = Image(systemName: "chevron.down")
