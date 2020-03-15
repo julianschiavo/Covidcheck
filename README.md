@@ -1,5 +1,5 @@
 # Covidcheck
-<img src="screenshot.PNG" align="right" style="max-width:35%"></img>
+<img src="screenshot.PNG" align="right" width="35%"></img>
 Covidcheck is an app that allows people to track COVID-19 cases in an easy-to-use interface to increase awareness and preparation. 
 Unfortunately, Apple has rejected Covidcheck as the App Store Review Guidelines require that medical apps are published by medical institutions, so I've open sourced Covidcheck under a very free license with the intent that people can use it for any purpose.
 
