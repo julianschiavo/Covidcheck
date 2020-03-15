@@ -33,6 +33,9 @@ struct BaseView: View {
             self.isInfoViewPresented.toggle()
         }, label: {
             Images.info
+                .padding(5)
+                .background(Color.clear)
+                .clipShape(Circle())
         })
         .sheet(isPresented: $isInfoViewPresented) {
             InfoView(isPresented: self.$isInfoViewPresented)
@@ -45,6 +48,9 @@ struct BaseView: View {
             self.isExpandAlertPresented.toggle()
         }, label: {
             expandAllRegionsButtonImage
+                .padding(5)
+                .background(Color.clear)
+                .clipShape(Circle())
         })
         .alert(isPresented: $isExpandAlertPresented) {
             Alert(title: allRegionExpansionAlertText)
@@ -57,6 +63,9 @@ struct BaseView: View {
             DataManager.shared.updateData()
         }, label: {
             Images.refresh
+                .padding(5)
+                .background(Color.clear)
+                .clipShape(Circle())
         })
         .alert(isPresented: $isRefreshAlertPresented) {
             Alert(title: Text("Data Refreshed"))
