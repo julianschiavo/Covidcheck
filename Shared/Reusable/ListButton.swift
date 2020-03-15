@@ -10,6 +10,9 @@ import SwiftUI
 
 /// A simple button to be used in a `List` with default padding and image size
 struct ListButton: View {
+    
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+
     var image: Image
     var text: String
     var action: () -> Void
@@ -24,6 +27,6 @@ struct ListButton: View {
                 #endif
             }
         }
-        .foregroundColor(.white)
+        .foregroundColor(colorScheme == .light ? .black : .white)
     }
 }
