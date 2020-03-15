@@ -83,7 +83,7 @@ struct BaseView: View {
                         expandAllRegionsButton
                         refreshDataButton
                     }
-            )
+                )
         }
     }
 }
