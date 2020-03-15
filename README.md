@@ -7,7 +7,9 @@ Unfortunately, Apple has rejected Covidcheck as the App Store Review Guidelines 
 To install Covidcheck, clone this repository and open the Xcode project using Xcode. Change the bundle identifier, then Build and Run the app to your device.
 
 ## Contribution
-I worked on Covidcheck in my spare time and released it with the hope that it would prove useful for people. If you find an issue, feel free to report it, but please consider trying to fix it so you can help others in the future and contribute to this project. Any pull requests or contributions to improve features or fix bugs are more than welcome. 
+I worked on Covidcheck in my spare time and released it with the hope that it would prove useful for people. If you find an issue, feel free to report it, but please consider trying to fix it so you can help others in the future and contribute to this project. Any pull requests or contributions to improve features or fix bugs are more than welcome.
+
+Before contributing to this project, please read the [Code of Conduct](CODE_OF_CONDUCT.md) and follow it at all times while contributing.
 
 **If you work at or know a medical organization who could make use of this project and release it on the App Store, please do contact me. I'd love to volunteer to help out and work with you to customize and release this app to benefit even more people.**
 
