@@ -24,6 +24,6 @@ struct ListButton: View {
                 #endif
             }
         }
-        .foregroundColor(.white)
+        .foregroundColor(.primary)
     }
 }
