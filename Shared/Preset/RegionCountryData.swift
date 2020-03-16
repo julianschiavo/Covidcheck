@@ -295,7 +295,7 @@ enum CountryData: String {
     case uruguay = "Uruguay"
     case uzbekistan = "Uzbekistan"
     case vanuatu = "Vanuatu"
-    case venezuelaBolivarianRepublicOf = "Venezuela (Bolivarian Republic of)"
+    case venezuelaBolivarianRepublicOf = "Venezuela" // "Venezuela (Bolivarian Republic of)"
     case vietNam = "Vietnam" // "Viet Nam"
     case virginIslandsBritish = "Virgin Islands (British)"
     case virginIslandsUS = "Virgin Islands (U.S.)"
