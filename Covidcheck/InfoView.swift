@@ -21,7 +21,7 @@ struct InfoView: View {
         NavigationView {
             List {
                 Section(header: Text("ABOUT")) {
-                    Text("Covidcheck is made by Julian Schiavo and open sourced on Github under the Unlicense license.")
+                    Text("Covidcheck is made by Julian Schiavo and open sourced on GitHub under the Unlicense license.")
                 }
                 Section(header: Text("PREFERENCES")) {
                     ForEach(allPreferences, id: \.id) { preference in
