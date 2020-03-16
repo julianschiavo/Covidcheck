@@ -12,18 +12,29 @@ import SwiftUI
 struct ListButton: View {
     var image: Image
     var text: String
-    var action: () -> Void
+    var action: () -> Void = {}
     
     var body: some View {
         Button(action: action) {
             HStack(spacing: 10) {
-                #if os(iOS)
-                HStack { image.font(.system(size: 20)) }
-                    .frame(width: 30)
+                image.font(.system(size: 20))
+                
                 Text(text)
-                #endif
             }
         }
         .foregroundColor(.primary)
     }
 }
+
+#if DEBUG
+
+struct ListButton_Previews: PreviewProvider {
+    static var previews: some View {
+        ListButton(
+            image: Images.refresh,
+            text: "Refresh Data"
+        )
+    }
+}
+
+#endif
