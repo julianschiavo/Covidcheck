@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  Covidcheck
+
+  Created by Roman Podymov on 16/03/2020.
+  Copyright © 2020 Julian Schiavo. All rights reserved.
+*/
+
+"message.dataRefreshed" = "Data Refreshed";
+"message.allRegionsExpanded" = "All Regions Expanded";
+"message.allRegionsCollapsed" = "All Regions Collapsed";
+
+"info.about.title" = "ABOUT";
+"info.about.description" = "Covidcheck is made by Julian Schiavo and open sourced on Github under the Unlicense license.";
+
+"info.symbolDescription.title" = "WHAT THE SYMBOLS MEAN";
+"info.symbolDescription.numberOfPeopleInfected" = "Number of people infected";
+"info.symbolDescription.numberOfDeathsFromCOVID19" = "Number of deaths from COVID-19";
+"info.symbolDescription.numberOfRecoveredCases" = "Number of recovered cases";
+"info.symbolDescription.numberOfCurrentCases" = "Number of current cases (infected and not dead or recovered)";
+"info.symbolDescription.increaseInCurrentCasesSinceLastAppOpen" = "Increase in current cases since last app open";
+"info.symbolDescription.decreaseInCurrentCasesSinceLastAppOpen" = "Decrease in current cases since last app open";

@@ -18,17 +18,17 @@ struct InfoView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("ABOUT")) {
-                    Text("Covidcheck is made by Julian Schiavo and open sourced on Github under the Unlicense license.")
+                Section(header: Text(L10n.Info.About.title)) {
+                    Text(L10n.Info.About.description)
                 }
-                Section(header: Text("WHAT THE SYMBOLS MEAN")) {
+                Section(header: Text(L10n.Info.SymbolDescription.title)) {
                     VStack(alignment: .leading) {
-                        Token(color: .red, image: Images.casesInfected, text: "Number of people infected")
-                        Token(color: .black, image: Images.casesDead, text: "Number of deaths from COVID-19")
-                        Token(color: .green, image: Images.casesRecovered, text: "Number of recovered cases")
-                        Token(color: .gray, image: Images.casesCurrent, text: "Number of current cases (infected and not dead or recovered)")
-                        Token(color: .gray, image: Images.casesIncrease, text: "Increase in current cases since last app open")
-                        Token(color: .gray, image: Images.casesDecrease, text: "Decrease in current cases since last app open")
+                        Token(color: .red, image: Images.casesInfected, text: L10n.Info.SymbolDescription.numberOfPeopleInfected)
+                        Token(color: .black, image: Images.casesDead, text: L10n.Info.SymbolDescription.numberOfDeathsFromCOVID19)
+                        Token(color: .green, image: Images.casesRecovered, text: L10n.Info.SymbolDescription.numberOfRecoveredCases)
+                        Token(color: .gray, image: Images.casesCurrent, text: L10n.Info.SymbolDescription.numberOfCurrentCases)
+                        Token(color: .gray, image: Images.casesIncrease, text: L10n.Info.SymbolDescription.increaseInCurrentCasesSinceLastAppOpen)
+                        Token(color: .gray, image: Images.casesDecrease, text: L10n.Info.SymbolDescription.decreaseInCurrentCasesSinceLastAppOpen)
                     }
                     .padding([.top, .bottom], 10)
                 }

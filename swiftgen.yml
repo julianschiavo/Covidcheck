@@ -1,0 +1,7 @@
+input_dir: Shared/Assets/
+output_dir: Generated/
+strings:
+    inputs: en.lproj
+    outputs:
+        - templateName: structured-swift4
+          output: strings.swift

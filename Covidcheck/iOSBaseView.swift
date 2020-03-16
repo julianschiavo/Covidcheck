@@ -21,7 +21,7 @@ struct BaseView: View {
     @State private var isExpandAlertPresented = false
     
     var allRegionExpansionAlertText: Text {
-        Text(dataManager.areAllRegionsExpanded ? "All Regions Expanded" : "All Regions Collapsed")
+        Text(dataManager.areAllRegionsExpanded ? L10n.Message.allRegionsExpanded : L10n.Message.allRegionsCollapsed)
     }
     
     var expandAllRegionsButtonImage: Image {
@@ -68,7 +68,7 @@ struct BaseView: View {
                 .clipShape(Circle())
         })
         .alert(isPresented: $isRefreshAlertPresented) {
-            Alert(title: Text("Data Refreshed"))
+            Alert(title: Text(L10n.Message.dataRefreshed))
         }
     }
     
