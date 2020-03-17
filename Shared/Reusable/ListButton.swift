@@ -25,17 +25,3 @@ struct ListButton: View {
         .foregroundColor(.primary)
     }
 }
-
-#if DEBUG
-
-struct ListButton_Previews: PreviewProvider {
-    static var previews: some View {
-        ListButton(
-            image: Images.refresh,
-            text: "Refresh Data",
-            action: {}
-        )
-    }
-}
-
-#endif
