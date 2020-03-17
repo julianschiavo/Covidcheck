@@ -97,8 +97,7 @@ struct TokenList_Previews: PreviewProvider {
         TokenList(tokens: [
             Token(color: .red, image: Images.casesInfected, text: "Number of people infected"),
             Token(color: .black, image: Images.casesDead, text: "Number of deaths from COVID-19")
-            ]
-        )
+        ])
     }
 }
 
