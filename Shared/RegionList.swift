@@ -67,7 +67,8 @@ struct RegionList: View {
 }
 
 struct CountryList_Previews: PreviewProvider {
+    @State static var isRefreshAlertPresented = false
     static var previews: some View {
-        RegionList(isRefreshAlertPresented: .constant(false))
+        RegionList(isRefreshAlertPresented: $isRefreshAlertPresented)
     }
 }
