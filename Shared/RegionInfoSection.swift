@@ -63,32 +63,13 @@ struct RegionInfoSection_Previews: PreviewProvider {
         let regionInfo = RegionInfo(
             region: .europe,
             countries: [
-                CountryInfo(
-                    name: "Germany",
-                    infectionCount: 500,
-                    deathCount: 100,
-                    recoveredCount: 50,
-                    difference: 30,
-                    lastUpdated: "",
-                    comments: ""
-                ),
-                CountryInfo(
-                    name: "Italy",
-                    infectionCount: 500,
-                    deathCount: 100,
-                    recoveredCount: 50,
-                    difference: 30,
-                    lastUpdated: "",
-                    comments: ""
-                )
+                CountryInfo(name: "Country", infectionCount: 500, deathCount: 100, recoveredCount: 50, difference: 30, lastUpdated: "", comments: ""),
+                CountryInfo(name: "Additional", infectionCount: 500, deathCount: 100, recoveredCount: 50, difference: 30, lastUpdated: "", comments: "")
             ]
         )
         
         return List {
-            RegionInfoSection(
-                regionInfo: regionInfo,
-                width: .constant(300)
-            )
+            RegionInfoSection(regionInfo: regionInfo, width: .constant(300))
         }
     }
 }
