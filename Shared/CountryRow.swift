@@ -96,20 +96,8 @@ struct CountryRow: View {
 
 struct CountryRow_Previews: PreviewProvider {
     static var previews: some View {
-        let countryInfo = CountryInfo(
-            name: "China",
-            infectionCount: 50,
-            deathCount: 10,
-            recoveredCount: 20,
-            difference: 100,
-            lastUpdated: "",
-            comments: ""
-        )
-        
-        return CountryRow(
-            country: countryInfo,
-            width: .constant(200)
-        )
+        let countryInfo = CountryInfo(name: "Country", infectionCount: 50, deathCount: 10, recoveredCount: 20, difference: 100, lastUpdated: "", comments: "")
+        return CountryRow(country: countryInfo, width: .constant(200))
     }
 }
 
