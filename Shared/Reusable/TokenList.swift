@@ -88,3 +88,17 @@ struct TokenList: View {
         return (width: tokenImageSize + textSize.width + tokenPadding, height: textSize.height + tokenPadding)
     }
 }
+
+
+#if DEBUG
+
+struct TokenList_Previews: PreviewProvider {
+    static var previews: some View {
+        TokenList(tokens: [
+            Token(color: .red, image: Images.casesInfected, text: "Number of people infected"),
+            Token(color: .black, image: Images.casesDead, text: "Number of deaths from COVID-19")
+        ])
+    }
+}
+
+#endif
