@@ -17,11 +17,9 @@ struct ListButton: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: 10) {
-                #if os(iOS)
                 HStack { image.font(.system(size: 20)) }
                     .frame(width: 30)
                 Text(text)
-                #endif
             }
         }
         .foregroundColor(.primary)
