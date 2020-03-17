@@ -46,3 +46,18 @@ struct Token: View, Identifiable {
     }
     
 }
+
+#if DEBUG
+
+struct Token_Previews: PreviewProvider {
+    static var previews: some View {
+        List {
+            Token(color: .red, image: Images.casesInfected, text: "Number of people infected")
+            Token(color: .black, image: Images.casesDead, text: "Number of deaths from COVID-19")
+            Token(color: .green, image: Images.casesRecovered, text: "Number of recovered cases")
+            Token(color: .gray, image: Images.casesCurrent, text: "Number of current cases (infected and not dead or recovered)")
+        }
+    }
+}
+
+#endif
