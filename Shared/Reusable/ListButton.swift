@@ -30,11 +30,7 @@ struct ListButton: View {
 
 struct ListButton_Previews: PreviewProvider {
     static var previews: some View {
-        ListButton(
-            image: Images.refresh,
-            text: "Refresh Data",
-            action: {}
-        )
+        ListButton(image: Images.refresh, text: "Refresh Data", action: { })
     }
 }
 
