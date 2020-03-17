@@ -274,7 +274,7 @@ enum CountryData: String {
     case syrianArabRepublic = "Syrian Arab Republic"
     case taiwanProvinceOfChina = "Taiwan" // "Taiwan, Province of China"
     case tajikistan = "Tajikistan"
-    case tanzaniaUnitedRepublicOf = "Tanzania, United Republic of"
+    case tanzaniaUnitedRepublicOf = "Tanzania" // "Tanzania, United Republic of"
     case thailand = "Thailand"
     case timorLeste = "Timor-Leste"
     case togo = "Togo"
