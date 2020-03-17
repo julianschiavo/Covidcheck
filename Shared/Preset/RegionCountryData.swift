@@ -26,9 +26,9 @@ import SwiftUI
  Aland Islands (AX), Antarctica (AQ), Benin (BJ), British Indian Ocean
  Territory (IO), Burundi (BI), Cocos (Keeling) Islands (CC), Comoros (KM),
  Democratic People's Republic of Korea (North Korea) (KP), Djibouti (DJ),
- Eritrea (ER), Ethiopia (ET), French Southern Territories (TF), Kiribati (KI),
+ Eritrea (ER), French Southern Territories (TF), Kiribati (KI),
  Libya (LY), Malawi (MW), Marshall Islands (MH), Niue (NU), Palau (PW),
- Pitcairn Islands (PN), Sao Tome and Principe ST, Somalia (SO), South Sudan (SS),
+ Pitcairn Islands (PN), Sao Tome and Principe ST, South Sudan (SS),
  Syrian Arab Republic (SY), Timor Leste (TL), Tokelau (TK), Tuvalu (TV),
  Wallis and Futuna (WF), Western Samara (EH), Yemen (YE).
  
