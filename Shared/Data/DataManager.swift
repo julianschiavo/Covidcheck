@@ -22,26 +22,14 @@ class DataManager: ObservableObject {
         }
     }
     
-    struct RawData: Codable {
-        var title: String
-//        var lastUpdatedDate: Date
-        var rawCountries: [RawCountryInfo]
-        
-        var countries: [CountryInfo] {
-            rawCountries.map { $0.country }
-        }
-        
-        enum CodingKeys: String, CodingKey {
-            case title
-//            case lastUpdatedDate = "last_updated"
-            case rawCountries = "entries"
-        }
-    }
-    
     // Properties containing the final data after loading and preparation
     @Published var regionInfos = [RegionInfo]()
     @Published var expandedRegions = [Region]()
     @Published var currentCaseDifference = 0
+    
+    var currentDataSource: DataSource {
+        DataSourcePreference().current
+    }
     
     private var baseURL: URL
     
@@ -81,69 +69,19 @@ class DataManager: ObservableObject {
         let deathCount = regionInfos.flatMap { $0.countries }.map { $0.deathCount }.reduce(0, +)
         let recoveredCount = regionInfos.flatMap { $0.countries }.map { $0.recoveredCount }.reduce(0, +)
         
-        return CountryInfo(name: "Overall", infectionCount: infectionCount, deathCount: deathCount, recoveredCount: recoveredCount, difference: currentCaseDifference, lastUpdated: "", comments: "")
+        return CountryInfo(name: "Overall", data: .overall, infectionCount: infectionCount, deathCount: deathCount, recoveredCount: recoveredCount, difference: currentCaseDifference, lastUpdated: "", comments: "")
     }
     
     func updateData() {
-        fetchData { result in
+        currentDataSource.fetchData { result in
             switch result {
-            case let .success(countries):
-                self.createCountryRegionList(countries: countries)
+            case let .success(regionInfos):
+                self.regionInfos = regionInfos
+                self.updateDifferenceData()
             case let .failure(error):
                 print("Failed to update data with error", error.localizedDescription)
             }
         }
-    }
-    
-    /// Creates and sorts the list of regions and countries from the raw data
-    func createCountryRegionList(countries: [CountryInfo]) {
-        var regionInfos = [RegionInfo]()
-        
-        for region in Region.allCases {
-            let regionCountries = countries
-                .filter { $0.infectionCount > 0 }
-                .filter { $0.data?.region ?? .restOfTheWorld == region }
-                .sorted { $0.infectionCount > $1.infectionCount }
-            let regionInfo = RegionInfo(region: region, countries: regionCountries)
-            regionInfos.append(regionInfo)
-        }
-        
-        regionInfos = regionInfos.filter { !$0.countries.isEmpty }
-        regionInfos.sort { $0.totalCurrentCount > $1.totalCurrentCount }
-        
-        DispatchQueue.main.async {
-            self.regionInfos = regionInfos
-            self.updateDifferenceData()
-        }
-    }
-    
-    /// Fetches updated data from the data source, which is then processed above
-    private func fetchData(completion: @escaping (Result<[CountryInfo], Error>) -> Void) {
-        let type = "FetchData"
-                
-        let url = baseURL.appendingPathComponent("/sheet/wuhan/viruscases.json")
-        DataManager.request(ofType: type, didChangeStatus: .fetchStarting(url))
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                DataManager.request(ofType: type, didChangeStatus: .fetchFailed(url, error))
-                completion(.failure(error ?? DataManagerError.failedToLoad))
-                return
-            }
-            DataManager.request(ofType: type, didChangeStatus: .fetchSuccessful(url))
-            
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            do {
-                let rawData = try decoder.decode(RawData.self, from: data)
-                DataManager.request(ofType: type, didChangeStatus: .decodeSuccessful)
-                completion(.success(rawData.countries))
-            } catch {
-                DataManager.request(ofType: type, didChangeStatus: .decodeFailed(url, error))
-                completion(.failure(error))
-            }
-        }
-        task.resume()
     }
     
     // MARK: - Region Expansion

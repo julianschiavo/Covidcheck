@@ -18,7 +18,7 @@ struct Token: View, Identifiable {
     var text: String
     
     var id: String {
-        "text\(color)"
+        UUID().uuidString
     }
     
     var body: some View {

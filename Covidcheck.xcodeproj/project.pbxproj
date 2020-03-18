@@ -21,6 +21,15 @@
 		B90821712417C9F600ECE461 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B928435523EFADC0009E87AE /* String-Extensions.swift */; };
 		B90821722417C9F600ECE461 /* UIFont-Improved.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924DE5423E3BC3600D1B11B /* UIFont-Improved.swift */; };
 		B90821732417C9F600ECE461 /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B92E3A582414BE2A001D3A78 /* Flags.xcassets */; };
+		B92471D62421024E00CB94BF /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92471D52421024E00CB94BF /* DataSource.swift */; };
+		B92471D8242102B900CB94BF /* SCMPDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92471D7242102B900CB94BF /* SCMPDataSource.swift */; };
+		B92471D92421071C00CB94BF /* SCMPDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92471D7242102B900CB94BF /* SCMPDataSource.swift */; };
+		B92471DA2421075A00CB94BF /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92471D52421024E00CB94BF /* DataSource.swift */; };
+		B92471DC24210A2300CB94BF /* BingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92471DB24210A2300CB94BF /* BingDataSource.swift */; };
+		B92471DD24210A2300CB94BF /* BingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92471DB24210A2300CB94BF /* BingDataSource.swift */; };
+		B92471DF24219F8300CB94BF /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92471DE24219F8300CB94BF /* Preferences.swift */; };
+		B92471E024219F8300CB94BF /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92471DE24219F8300CB94BF /* Preferences.swift */; };
+		B92471E22421A6AB00CB94BF /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92471E12421A6AB00CB94BF /* PreferenceView.swift */; };
 		B924DE3523E302B500D1B11B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924DE3423E302B500D1B11B /* AppDelegate.swift */; };
 		B924DE3723E302B500D1B11B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924DE3623E302B500D1B11B /* SceneDelegate.swift */; };
 		B924DE3B23E302BB00D1B11B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B924DE3A23E302BB00D1B11B /* Assets.xcassets */; };
@@ -98,6 +107,11 @@
 		B902958D241DEF130028695E /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		B902958F241DF8630028695E /* TokenList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenList.swift; sourceTree = "<group>"; };
 		B90821622417C7EF00ECE461 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		B92471D52421024E00CB94BF /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		B92471D7242102B900CB94BF /* SCMPDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCMPDataSource.swift; sourceTree = "<group>"; };
+		B92471DB24210A2300CB94BF /* BingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingDataSource.swift; sourceTree = "<group>"; };
+		B92471DE24219F8300CB94BF /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		B92471E12421A6AB00CB94BF /* PreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
 		B924DE3123E302B500D1B11B /* Covidcheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Covidcheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B924DE3423E302B500D1B11B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B924DE3623E302B500D1B11B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +188,16 @@
 			path = Preset;
 			sourceTree = "<group>";
 		};
+		B92471D42421020700CB94BF /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B92471D52421024E00CB94BF /* DataSource.swift */,
+				B92471D7242102B900CB94BF /* SCMPDataSource.swift */,
+				B92471DB24210A2300CB94BF /* BingDataSource.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		B924DE2823E302B500D1B11B = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +227,8 @@
 				B924DE3623E302B500D1B11B /* SceneDelegate.swift */,
 				B92E3A542414AF5C001D3A78 /* iOSBaseView.swift */,
 				B902958D241DEF130028695E /* InfoView.swift */,
+				B92471DE24219F8300CB94BF /* Preferences.swift */,
+				B92471E12421A6AB00CB94BF /* PreferenceView.swift */,
 				B924DE3A23E302BB00D1B11B /* Assets.xcassets */,
 				B924DE3F23E302BB00D1B11B /* LaunchScreen.storyboard */,
 				B924DE4223E302BB00D1B11B /* Info.plist */,
@@ -271,6 +297,7 @@
 			children = (
 				B924DE4823E302FA00D1B11B /* CountryInfo.swift */,
 				B924DE4A23E3038B00D1B11B /* DataManager.swift */,
+				B92471D42421020700CB94BF /* Sources */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -414,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B92471D8242102B900CB94BF /* SCMPDataSource.swift in Sources */,
 				B98BC92E24186B8A00E6937D /* WidthCalculation.swift in Sources */,
 				B924DE4923E302FA00D1B11B /* CountryInfo.swift in Sources */,
 				B924DE5323E30CC500D1B11B /* RegionCountryData.swift in Sources */,
@@ -421,16 +449,20 @@
 				B902958E241DEF130028695E /* InfoView.swift in Sources */,
 				B986990A24112BFE00947D03 /* Token.swift in Sources */,
 				B90821632417C7EF00ECE461 /* Images.swift in Sources */,
+				B92471DF24219F8300CB94BF /* Preferences.swift in Sources */,
 				B924DE4B23E3038B00D1B11B /* DataManager.swift in Sources */,
 				B98BC93424186CAE00E6937D /* RegionInfoSection.swift in Sources */,
+				B92471DC24210A2300CB94BF /* BingDataSource.swift in Sources */,
 				B924DE3523E302B500D1B11B /* AppDelegate.swift in Sources */,
 				B92E3A552414AF5C001D3A78 /* iOSBaseView.swift in Sources */,
 				B924DE5523E3BC3600D1B11B /* UIFont-Improved.swift in Sources */,
 				B924DE3723E302B500D1B11B /* SceneDelegate.swift in Sources */,
 				B9029590241DF8630028695E /* TokenList.swift in Sources */,
+				B92471D62421024E00CB94BF /* DataSource.swift in Sources */,
 				B924DE4F23E3076900D1B11B /* RegionList.swift in Sources */,
 				B98BC93124186BA400E6937D /* ListButton.swift in Sources */,
 				B924DE5123E307BF00D1B11B /* CountryRow.swift in Sources */,
+				B92471E22421A6AB00CB94BF /* PreferenceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,11 +476,15 @@
 				B98BC93524186CAE00E6937D /* RegionInfoSection.swift in Sources */,
 				B98BC93224186BA400E6937D /* ListButton.swift in Sources */,
 				B98BC92F24186B8A00E6937D /* WidthCalculation.swift in Sources */,
+				B92471DA2421075A00CB94BF /* DataSource.swift in Sources */,
 				B908216D2417C9F600ECE461 /* CountryInfo.swift in Sources */,
+				B92471E024219F8300CB94BF /* Preferences.swift in Sources */,
 				B908216B2417C9F600ECE461 /* Token.swift in Sources */,
 				B90821692417C9F600ECE461 /* RegionList.swift in Sources */,
+				B92471DD24210A2300CB94BF /* BingDataSource.swift in Sources */,
 				B90821712417C9F600ECE461 /* String-Extensions.swift in Sources */,
 				B92E3A2C2414AEED001D3A78 /* ComplicationController.swift in Sources */,
+				B92471D92421071C00CB94BF /* SCMPDataSource.swift in Sources */,
 				B908216A2417C9F600ECE461 /* CountryRow.swift in Sources */,
 				B92E3A4A2414AF3F001D3A78 /* WatchBaseView.swift in Sources */,
 				B9029591241DF8630028695E /* TokenList.swift in Sources */,
