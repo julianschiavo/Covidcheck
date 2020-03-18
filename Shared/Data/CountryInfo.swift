@@ -8,43 +8,6 @@
 
 import Foundation
 
-/// A model describing the raw country info received from the data source
-struct RawCountryInfo: Codable {
-    var name: String?
-    var infections: String?
-    var deaths: String?
-    var recovered: String?
-    var comments: String?
-    var lastUpdated: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case name = "country"
-        case infections = "cases"
-        case deaths
-        case recovered
-        case comments
-        case lastUpdated = "lastupdated"
-    }
-    
-    /// Create a `CountryInfo` object from the raw data, removing illegal characters
-    var country: CountryInfo {
-        let filteredInfections = infections?.removingNonNumericCharacters() ?? ""
-        let infectionCount = Int(filteredInfections) ?? 0
-        
-        let filteredDeaths = deaths?.removingNonNumericCharacters() ?? ""
-        let deathCount = Int(filteredDeaths) ?? 0
-        
-        let filteredRecovered = recovered?.removingNonNumericCharacters() ?? ""
-        let recoveredCount = Int(filteredRecovered) ?? 0
-        
-        let nameFixed = name ?? ""
-        let commentsFixed = comments ?? ""
-        let lastUpdatedFixed = lastUpdated ?? ""
-        
-        return CountryInfo(name: nameFixed, infectionCount: infectionCount, deathCount: deathCount, recoveredCount: recoveredCount, lastUpdated: lastUpdatedFixed, comments: commentsFixed)
-    }
-}
-
 /// A model for a region which contains multiple countries
 struct RegionInfo: Identifiable {
     var id: String { region.name }
@@ -68,6 +31,7 @@ struct RegionInfo: Identifiable {
 struct CountryInfo: Identifiable {
     var id: String { name }
     let name: String
+    let data: CountryData?
     
     let infectionCount: Int
     let deathCount: Int
@@ -77,10 +41,4 @@ struct CountryInfo: Identifiable {
     
     let lastUpdated: String
     let comments: String
-    
-    var data: CountryData? {
-        CountryData(rawValue: name) ??
-            CountryData(rawValue: name.replacingOccurrences(of: "*", with: "")) ??
-            CountryData(rawValue: name.replacingOccurrences(of: " ", with: ""))
-    }
 }

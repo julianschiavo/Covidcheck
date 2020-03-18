@@ -21,7 +21,7 @@ struct RegionList: View {
     
     var body: some View {
         #if os(iOS)
-        let footerText = Text("Regions are ordered by number of current cases (infected but not dead or recovered). Countries are ordered by number of infections.\n\n")
+        let footerText = Text("Data Source: \(dataManager.currentDataSource.name)")
         #else
         let footerText = Text("") // Hide the info text on watchOS to save space
         #endif
