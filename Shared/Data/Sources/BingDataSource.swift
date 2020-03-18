@@ -47,7 +47,8 @@ class BingDataSource: DataSource {
     
     enum CountryMapping {
         static func countryFromCountryName(_ countryName: String) -> CountryData? {
-            switch countryName {
+            let cleanedCountryName = countryName.replacingOccurrences(of: "*", with: "")
+            switch cleanedCountryName {
             case "Bolivia":                         return .boliviaPlurinationalStateOf
             case "Brunei":                          return .bruneiDarussalam
             case "Republic of the Congo":           return .congo
@@ -68,9 +69,8 @@ class BingDataSource: DataSource {
             case "Venezuela":                       return .venezuelaBolivarianRepublicOf
             case "Vietnam":                         return .vietNam
             default:
-                return CountryData(rawValue: countryName) ??
-                    CountryData(rawValue: countryName.replacingOccurrences(of: "*", with: "")) ??
-                    CountryData(rawValue: countryName.replacingOccurrences(of: " ", with: ""))
+                return CountryData(rawValue: cleanedCountryName) ??
+                    CountryData(rawValue: cleanedCountryName.replacingOccurrences(of: " ", with: ""))
             }
         }
     }
